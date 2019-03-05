@@ -10,13 +10,13 @@
 let seconds = 0;
 let minutes = 0;
 let hours = 0;
-let millisec=0;
+let millisec = 0;
 
 //Define vars to hold "display" value
 let displaySeconds = 0;
 let displayMinutes = 0;
 let displayHours = 0;
-let displatMillisec = 0;
+let displayMillisec = 0;
 
 //Define var to hold setInterval() function
 let interval = null;
@@ -26,11 +26,12 @@ let status = "stopped";
 
 //Stopwatch function (logic to determine when to increment next value, etc.)
 function stopWatch(){
+    //Logic to determine when to increment next value
     millisec++;
     if (millisec/100===1) {
         millisec=0;
         seconds++;
-         if(seconds / 60 === 1){
+        if(seconds / 60 === 1){
         seconds = 0;
         minutes++;
 
@@ -42,13 +43,14 @@ function stopWatch(){
     }
     }
 
-    //Logic to determine when to increment next value
-   
-
+    
     //If seconds/minutes/hours are only one digit, add a leading 0 to the value
-    if (millisec<100)
-    {
-        displayMillisec = millisec.toString();
+    if (millisec<100){
+        displayMillisec= millisec.toString();
+        if (millisec<10) 
+        {
+            displayMillisec= "0"+millisec.toString();
+        }
     }
     if(seconds < 10){
         displaySeconds = "0" + seconds.toString();
@@ -105,7 +107,6 @@ function reset(){
     seconds = 0;
     minutes = 0;
     hours = 0;
-    millisec = 0;
     document.getElementById("display").innerHTML = "00:00:00:00";
     document.getElementById("startStop").innerHTML = "Start";
 
@@ -145,6 +146,3 @@ function reset(){
     
 </body>
 </html>
-
-
- 
